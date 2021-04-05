@@ -37,13 +37,23 @@ public class Garland {
         on();
     }
 
-    public void moveRigt() {
+    public void moveRigt() { // бегущая срока в право
         this.stance = this.stance >> 1;
     }
 
-    public void moveLeft() {
-        this.stance = this.stance >> 1;
+    public void moveLeft() {  // бегущая срока в лево
+        this.stance = this.stance << 1;
     }
+
+    public void checkFirstBit() {  // проверка первого бита, 1 или 0
+        if ((this.stance&0B01) == 0){
+            System.out.println("First bit is o");
+        }
+        else {
+            System.out.println("First bit is 1");
+        }
+    }
+
 
 
     //Метод мигания герляндой
@@ -113,7 +123,7 @@ public class Garland {
         System.out.println("Flash the garland - press 1? ");
         System.out.println("Run to the right - press 2? ");
         System.out.println("Run to the left - press 3? ");
-        System.out.println("Does the first lamp light? - press 4? ");
+        System.out.println("Check first lamp, 1 or 0 - press 4? ");
         System.out.println("Print current stance of the garland - press 5? ");
         System.out.println("Exit - press 6? ");
 
@@ -153,19 +163,18 @@ public class Garland {
             }
             if (choose == 2) {
                 garland.moveRigt();
-                System.out.println(Integer.toBinaryString(garland.getStance()));
+                garland.on();
             }
             if (choose == 3) {
                 garland.moveLeft();
-                System.out.println(Integer.toBinaryString(garland.getStance()));
+                garland.on();
             }
             if (choose == 4) {
-
-                System.out.println(Integer.toBinaryString(garland.getStance()));
+                garland.checkFirstBit();
             }
             if (choose == 5) {
-
-                System.out.println(Integer.toBinaryString(garland.getStance()));
+                garland.checkFirstBit();
+                garland.on();
             }
 
         }
